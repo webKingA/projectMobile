@@ -1,0 +1,178 @@
+.accountDetails {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 12;
+  background-color: #fefefe;
+}
+
+.accountDetails > div:nth-child(1) {
+  width: 100%;
+  background-color: #fcfcfc;
+  /* border-bottom: 2px solid rgba(0, 0, 0, .1); */
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.accountDetails > div:nth-child(1) > span {
+  font-family: k;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 10px;
+}
+
+.accountDetails > div:nth-child(1) > span > svg {
+  font-size: 20px;
+  margin-top: 3px;
+}
+
+.accountDetails > div:nth-child(2) {
+  width: 90%;
+  margin: auto;
+  background-color: #fcfcfc;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.accountDetails > div:nth-child(2) > div {
+  padding: 1rem 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.accountDetails > div:nth-child(2) > div:nth-child(1),
+.accountDetails > div:nth-child(2) > div:nth-child(2),
+.accountDetails > div:nth-child(2) > div:nth-child(3),
+.accountDetails > div:nth-child(2) > div:nth-child(4),
+.accountDetails > div:nth-child(2) > div:nth-child(5) {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.accountDetails > div:nth-child(2) > div:nth-child(1) > span:nth-child(1),
+.accountDetails > div:nth-child(2) > div:nth-child(2) > span:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.accountDetails > div:nth-child(2) > div:nth-child(1) > span:nth-child(1) > p,
+.accountDetails > div:nth-child(2) > div:nth-child(2) > span:nth-child(1) > p {
+  margin: 0;
+  font-family: v;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.accountDetails
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > span:nth-child(1)
+  > small {
+  margin: 0;
+  font-family: k;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.accountDetails
+  > div:nth-child(2)
+  > div:nth-child(2)
+  > span:nth-child(1)
+  > span
+  > small {
+  margin: 0;
+  font-family: k;
+  font-size: 14px;
+  opacity: 0.8;
+  margin-left: 5px;
+}
+
+.accountDetails
+  > div:nth-child(2)
+  > div:nth-child(2)
+  > span:nth-child(1)
+  > span {
+  display: flex;
+  align-items: center;
+  font-family: v;
+  font-size: 12px;
+}
+
+.accountDetails
+  > div:nth-child(2)
+  > div:nth-child(2)
+  > span:nth-child(1)
+  > span
+  > p {
+  background-color: rgba(39, 174, 96, 0.1);
+  color: rgba(39, 174, 96, 1);
+  display: flex;
+  align-items: center;
+  padding: 2px 5px;
+  border-radius: 10px;
+}
+
+.accountDetails
+  > div:nth-child(2)
+  > div:nth-child(2)
+  > span:nth-child(1)
+  > span
+  > p
+  > svg {
+  color: #fff;
+  background-color: rgba(39, 174, 96, 1);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+}
+
+.accountDetails > div:nth-child(2) > div:nth-child(3) > span:nth-child(1) {
+  font-family: v;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.accountDetails > div:nth-child(2) > div:nth-child(3) > span:nth-child(2) {
+  font-size: 20px;
+}
+
+.accountDetails > div:nth-child(2) > div:nth-child(4) > span:nth-child(1) {
+  font-family: v;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.accountDetails > div:nth-child(2) > div:nth-child(4) > span:nth-child(2) {
+  font-size: 20px;
+}
+
+.accountDetails > div:nth-child(2) > div:nth-child(5) > span:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.accountDetails > div:nth-child(2) > div:nth-child(5) > span:nth-child(1) > p {
+  margin: 0;
+  font-family: v;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.accountDetails
+  > div:nth-child(2)
+  > div:nth-child(5)
+  > span:nth-child(1)
+  > small {
+  margin: 0;
+  font-family: k;
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 5px;
+}

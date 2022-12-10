@@ -1,0 +1,55 @@
+.ticketing {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.ticketing > div:nth-child(1) {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 1rem;
+}
+
+.ticketing > div:nth-child(1) > span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: k;
+    font-size: 16px;
+}
+
+.ticketing > div:nth-child(1) > span > a > svg {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.ticketing > div:nth-child(2) {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #fcfcfc;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.ticketing > div:nth-child(2) > img {
+    width: 40%;
+    margin-top: 2rem;
+}
+
+.ticketing > div:nth-child(2) > p {
+    font-family: k;
+    font-size: 14px;
+    text-align: center;
+}
+
+.ticketing > div:nth-child(2) > small {
+    font-family: v;
+    font-size: 12px;
+    opacity: .6;
+    text-align: center;
+}

@@ -1,0 +1,66 @@
+.transaction {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.transaction > div {
+    width: 95%;
+    margin: auto;
+}
+
+.transaction > div:nth-child(1) {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 1rem;
+}
+
+.transaction > div:nth-child(1) > div {
+    width: 100%;
+}
+
+.transaction > div:nth-child(1) > div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transaction > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) {
+    font-family: k;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.transaction > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > a {
+    margin-top: 7px;
+}
+
+.transaction > div:nth-child(1) > div:nth-child(1) > span:nth-child(1) > a > svg {
+    font-size: 16px;
+}
+
+.transaction > div:nth-child(1) > div:nth-child(2) > div {
+    width: 100%;
+}
+
+.transaction > div:nth-child(1) > div:nth-child(3) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.transaction > div:nth-child(2) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.transaction > div:nth-child(2) p {
+    font-family: k;
+}

@@ -1,0 +1,59 @@
+.parttwo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  width: 90%;
+  margin: 1rem auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-family: k;
+  height: 40%;
+  margin-bottom: 6rem;
+}
+
+.parttwo > div {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 10px;
+}
+
+.parttwo > div:nth-child(1) > span,
+.parttwo > div:nth-child(2) > span,
+.parttwo > div:nth-child(3) > span,
+.parttwo > div:nth-child(4) > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.parttwo > div:nth-child(1) > span > a,
+.parttwo > div:nth-child(2) > span > a,
+.parttwo > div:nth-child(3) > span > a,
+.parttwo > div:nth-child(4) > span > a {
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.parttwo > div:nth-child(1) > span > svg,
+.parttwo > div:nth-child(2) > span > svg,
+.parttwo > div:nth-child(3) > span > svg,
+.parttwo > div:nth-child(4) > span > svg {
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.parttwo > div:nth-child(3) > span > a {
+    color: rgba(231, 76, 60,.7);
+}
+
+.parttwo > div:nth-child(3) > span > svg {
+    color: rgba(231, 76, 60,.7);
+}

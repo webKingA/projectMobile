@@ -1,0 +1,38 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  width: 90%;
+  margin: 0 auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-family: k;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  background-color: #fcfcfc;
+}
+
+.footer > div > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: v;
+    font-size: 14px;
+}
+
+.footer > div > span > svg {
+    font-size: 18px;
+}
+
+.footer > div:nth-child(4) > span > a , .footer > div:nth-child(4) > span > svg {
+    color: rgba(52, 152, 219,.7);
+}
+
+.footer > div > span > a {
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+}

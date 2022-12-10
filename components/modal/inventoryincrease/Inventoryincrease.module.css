@@ -1,0 +1,64 @@
+.inventoryincrease {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 11;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.inventoryincrease > div:nth-child(1) {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: #fcfcfc;
+}
+
+.inventoryincrease > div:nth-child(1) > div {
+    width: 95%;
+    margin: auto;
+}
+
+.inventoryincrease > div:nth-child(1) > div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.inventoryincrease > div:nth-child(1) > div:nth-child(1) > span {
+    font-family: k;
+    font-size: 16px;
+}
+
+.inventoryincrease > div:nth-child(1) > div:nth-child(1) > svg {
+    font-size: 20px;
+}
+
+.inventoryincrease > div:nth-child(1) > div:nth-child(2) input {
+    font-family: k;
+    font-size: 16px;
+}
+
+.inventoryincrease > div:nth-child(1) > div:nth-child(2) label {
+    font-family: v;
+    font-size: 14px;
+}
+
+.inventoryincrease > div:nth-child(2) {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+}

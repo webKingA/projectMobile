@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "k";
+  src: url("./../public/fonts/Kalameh\(FaNum\)-Bold.ttf");
+}
+
+@font-face {
+  font-family: "v";
+  src: url("./../public/fonts/Vazirmatn-Medium.ttf");
+}
+
+:root {
+  --s-text: "16px";
+  --s-title: "22px";
+  --s-svg: "26px";
+  --s-input: "14px";
+  --s-label: "12px";
+  --c-blue-900: "rgba(52, 152, 219,1.0)";
+  --c-blue-100: "rgba(52, 152, 219,.1)";
+  --c-green-900: "rgba(46, 204, 113,1.0)";
+}
+
+p {
+  margin: 0;
+}
