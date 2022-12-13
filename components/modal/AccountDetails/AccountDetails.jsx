@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./AccountDetails.module.css";
 import { useRecoilState } from "recoil";
 import {
@@ -26,10 +26,12 @@ import EditPhoneNumber from "../EditPhoneNumber/EditPhoneNumber";
 import AddEmail from "../AddEmail/AddEmail";
 import EditPassword from "../EditPassword/EditPassword";
 import BankAccountInformation from "../BankAccountInformation/BankAccountInformation";
+import fetchClient, { BASEURL } from "../../../utils/fetchClient";
 
 // import Components End
 
 export default function AccountDetails() {
+  const [user,setUser] = useState()
   const [showModalAccountDetails, setShowModalAccountDetails] =
     useRecoilState(ModalAccountDetails);
   const [showModalPersonalInformation, setShowModalPersonalInformation] =
@@ -39,7 +41,11 @@ export default function AccountDetails() {
     const [showModalAddEmail , setShowModalAddEmail] = useRecoilState(ModalAddEmail);
     const [showModalEditPassword , setShowModalEditPassword] = useRecoilState(ModalEditPassword);
     const [showModalBankAccountInformation , setShowModalBankAccountInformation] = useRecoilState(ModalBankAccountInformation);
-
+    useEffect(() => {
+      const user = fetchClient
+        .get(`${BASEURL}/UserProfile/currentuser`)
+        .then((response) => setUser(response.data));
+    }, []);
   return (
     <div className={style.accountDetails}>
       <div>
@@ -70,7 +76,7 @@ export default function AccountDetails() {
           <span>
             <p>شماره موبایل</p>
             <span>
-              <small>09304144479</small>
+              <small>{user?.phoneNumber}</small>
               <p>
                 <TiTick />
                 تایید شده

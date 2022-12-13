@@ -11,13 +11,19 @@ import { BsArrowRight } from "react-icons/bs";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
+import {updatePhoneUser} from "../../../utils/editProfile"
 export default function EditPhoneNumber() {
   const [showModalEditPhoneNumber, setShowModalEditPhoneNumber] =
     useRecoilState(ModalEditPhoneNumber);
 
     const [userMobile , setUserMobile] = useState('');
-
+    const editPhoneNumber = async () => {
+      if (!userMobile) return;
+      const id = localStorage.getItem("user");
+      await updatePhoneUser({ phone: userMobile, id });
+      setUserMobile("")
+      setShowModalEditPhoneNumber(false);
+    };
   return (
     <div className={style.editphonenumber}>
       <div>
@@ -44,7 +50,7 @@ export default function EditPhoneNumber() {
         </span>
       </div>
       <div>
-        <Button variant="contained" style={{width : "100%" , fontFamily : "v" , fontSize : "14px" , padding : "10px"}}>تایید و دریافت کد</Button>
+        <Button onClick={()=> editPhoneNumber()} variant="contained" style={{width : "100%" , fontFamily : "v" , fontSize : "14px" , padding : "10px"}}>تایید و دریافت کد</Button>
       </div>
     </div>
   );

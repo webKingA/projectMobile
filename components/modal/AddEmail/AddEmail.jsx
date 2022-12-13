@@ -11,12 +11,18 @@ import { BsArrowRight } from "react-icons/bs";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
+import {updateEmailUser} from "../../../utils/editProfile"
 export default function AddEmail() {
   const [showModalAddEmail, setShowModalAddEmail] =
     useRecoilState(ModalAddEmail);
     const [userEmail , setUserEmail] = useState('');
-
+    const submitEditEmail = async () => {
+      if (!userEmail) return;
+      const id = localStorage.getItem("user");
+      await updateEmailUser({ email: userEmail, id });
+      setUserEmail("")
+      setShowModalEditEmail(false);
+    };
   return (
     <div className={style.addemail}>
       <div>
@@ -43,7 +49,7 @@ export default function AddEmail() {
         </span>
       </div>
       <div>
-        <Button variant="contained" style={{width : "100%" , fontFamily : "v" , fontSize : "14px" , padding : "10px"}}>تایید</Button>
+        <Button onClick={()=> submitEditEmail()} variant="contained" style={{width : "100%" , fontFamily : "v" , fontSize : "14px" , padding : "10px"}}>تایید</Button>
       </div>
     </div>
   );

@@ -19,47 +19,70 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
+import { useFormik } from "formik";
+import {createCustomer} from "../../../utils/createCustomer"
+import {
+  days,
+  monthEn,
+  monthPersianData,
+  yearPersianData,
+  yearsEn,
+} from "../../../utils/data";
 // import mui End
-
+// initialValues
+const initialValues = {
+  reserverMobile: "",
+  name: "",
+  lastName: "",
+  latinFirstName: "",
+  latinLastName: "",
+  nationalNumber: "",
+  persianDateOfBirth: "",
+  passportNumber: "",
+  gender: 0,
+  identificationType: 0,
+  age: 0,
+  ageType: "",
+  mobileNumber: "",
+  telNumber: "",
+  passportStartDate: "",
+  passportExpireDate: "",
+  birthDayCountryId: 0,
+  passportCountryId: 0,
+  miladiDatoOfBirth: "",
+};
 const AddNewTraveller = () => {
-  const [showModalAddNewTraveller, setShowModalAddNewTraveller] =
-    useRecoilState(ModalAddNewTraveller);
+  const [
+    showModalAddNewTraveller,
+    setShowModalAddNewTraveller,
+  ] = useRecoilState(ModalAddNewTraveller);
 
-  const [age, setAge] = React.useState("");
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  const [yearPersian, setyearPersian] = useState("");
+  const [monthPersian, setMonthPersian] = useState("");
+  const [dayPersian, setDayPersian] = useState("");
+  const [yearMiladi, setYearMiladi] = useState("");
+  const [monthMiladi, setMonthMiladi] = useState("");
+  const [dayMiladi, setDayMiladi] = useState("");
 
-  const [gender, setGender] = React.useState("");
-  const handleChange2 = (event) => {
-    setGender(event.target.value);
-  };
-
-  const [day, setDay] = React.useState("");
-  const handleChange3 = (event) => {
-    setDay(event.target.value);
-  };
-
-  const [month, setMonth] = React.useState("");
-  const handleChange4 = (event) => {
-    setMonth(event.target.value);
-  };
-
-  const [year, setYear] = React.useState("");
-  const handleChange5 = (event) => {
-    setYear(event.target.value);
-  };
-
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [latinName, setLatinName] = useState("");
-  const [latinLastName, setLatinLastName] = useState("");
-  const [nationalCode, setNationalCode] = useState("");
-  const [passportNumber, setPassportNumber] = useState("");
-
+  const formik = useFormik({
+    initialValues,
+    onSubmit: async (values,actions) => {
+      const data = {
+        ...values,
+        persianDateOfBirth: `${yearPersian}-${monthPersian}-${dayPersian}`,
+        passportExpireDate: `${yearMiladi}-${monthMiladi}-${dayMiladi}`,
+      };
+      await createCustomer(data);
+      actions.resetForm({
+        values:initialValues
+      })
+    },
+  });
   return (
-    <div className={style.addnewtraveller}>
+    <form
+      onSubmit={formik.handleSubmit}
+      className={style.addnewtraveller}
+    >
       <div>
         <span>
           <BsArrowRight
@@ -75,7 +98,8 @@ const AddNewTraveller = () => {
           <span>اطلاعات عمومی</span>
           <span>
             <AiFillInfoCircle />
-            اطلاعات مسافران باید کاملا منطبق با مدارک شناسایی باشد.
+            اطلاعات مسافران باید کاملا منطبق با مدارک
+            شناسایی باشد.
           </span>
           <span>
             <TextField
@@ -83,8 +107,9 @@ const AddNewTraveller = () => {
               id="outlined-basic"
               label="نام فارسی (الزامی)"
               variant="outlined"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name="name"
+              onChange={formik.handleChange}
+              value={formik.values.name}
             />
           </span>
         </div>
@@ -94,8 +119,9 @@ const AddNewTraveller = () => {
             id="outlined-basic"
             label="نام خانوادگی فارسی (الزامی)"
             variant="outlined"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            name="lastName"
+            onChange={formik.handleChange}
+            value={formik.values.lastName}
           />
         </div>
         <div>
@@ -106,45 +132,61 @@ const AddNewTraveller = () => {
             aria-label="outlined primary button group"
           >
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Age</InputLabel>
+              <InputLabel id="demo-simple-select-label">
+                روز
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={age}
-                label="Age"
-                onChange={handleChange}
+                label="روز"
+                value={dayPersian}
+                onChange={(e) =>
+                  setDayPersian(e.target.value)
+                }
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {days.map((day) => (
+                  <MenuItem key={day.id} value={day.id}>
+                    {day.name}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Age</InputLabel>
+              <InputLabel id="demo-simple-select-label">
+                ماه
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={age}
-                label="Age"
-                onChange={handleChange}
+                label="ماه"
+                value={monthPersian}
+                onChange={(e) =>
+                  setMonthPersian(e.target.value)
+                }
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {monthPersianData.map((month) => (
+                  <MenuItem key={month.id} value={month.id}>
+                    {month.name}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Age</InputLabel>
+              <InputLabel id="demo-simple-select-label">
+                سال
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={age}
-                label="Age"
-                onChange={handleChange}
+                label="سال"
+                value={yearPersian}
+                onChange={(e) =>
+                  setyearPersian(e.target.value)
+                }
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {yearPersianData.map((year) => (
+                  <MenuItem  key={year} value={year}>{year}</MenuItem>
+                ))}
               </Select>
             </FormControl>
           </ButtonGroup>
@@ -154,15 +196,17 @@ const AddNewTraveller = () => {
             id="outlined-basic"
             label="نام لاتین (الزامی)"
             variant="outlined"
-            value={latinName}
-            onChange={(e) => setLatinName(e.target.value)}
+            name="latinFirstName"
+            onChange={formik.handleChange}
+            value={formik.values.latinFirstName}
           />
           <TextField
             id="outlined-basic"
             label="نام خانوادگی لاتین (الزامی)"
             variant="outlined"
-            value={latinLastName}
-            onChange={(e) => setLatinLastName(e.target.value)}
+            name="latinLastName"
+            onChange={formik.handleChange}
+            value={formik.values.latinLastName}
           />
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">
@@ -171,9 +215,10 @@ const AddNewTraveller = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={gender}
-              label="Age"
-              onChange={handleChange2}
+              label="gender"
+              name="gender"
+              onChange={formik.handleChange}
+              value={formik.values.gender}
             >
               <MenuItem value={1}>مرد</MenuItem>
               <MenuItem value={2}>زن</MenuItem>
@@ -183,30 +228,33 @@ const AddNewTraveller = () => {
         <div>
           <p>کد ملی</p>
           <small>
-            کد ملی برای مسافرین ایرانی که قصد سفرهای داخل ایران را دارند مورد
-            نیاز است.
+            کد ملی برای مسافرین ایرانی که قصد سفرهای داخل
+            ایران را دارند مورد نیاز است.
           </small>
           <TextField
             id="outlined-basic"
             label="کد ملی"
             variant="outlined"
-            value={nationalCode}
-            onChange={(e) => setNationalCode(e.target.value)}
+            name="nationalNumber"
+            onChange={formik.handleChange}
+            value={formik.values.nationalNumber}
           />
         </div>
         <div>
           <p>اطلاعات پاسپورت</p>
           <small>
-            اطلاعات پاسپورت برای مسافرین ایرانی که قصد سفر های خارجی را دارند و
-            همچنین مسافرین غیر ایرانی که قصد استفاده از هر نوع خدماتی را داشته
-            باشند مورد نیاز است
+            اطلاعات پاسپورت برای مسافرین ایرانی که قصد سفر
+            های خارجی را دارند و همچنین مسافرین غیر ایرانی
+            که قصد استفاده از هر نوع خدماتی را داشته باشند
+            مورد نیاز است
           </small>
           <TextField
             id="outlined-basic"
             label="شماره پاسپورت"
             variant="outlined"
-            value={passportNumber}
-            onChange={(e) => setPassportNumber(e.target.value)}
+            name="passportNumber"
+            onChange={formik.handleChange}
+            value={formik.values.passportNumber}
           />
         </div>
         <div>
@@ -218,45 +266,61 @@ const AddNewTraveller = () => {
               aria-label="outlined primary button group"
             >
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">روز</InputLabel>
+                <InputLabel id="demo-simple-select-label">
+                  روز
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={day}
                   label="Age"
-                  onChange={handleChange3}
+                  value={dayMiladi}
+                  onChange={(e) =>
+                    setDayMiladi(e.target.value)
+                  }
                 >
-                  <MenuItem value={1}>Ten</MenuItem>
-                  <MenuItem value={2}>Twenty</MenuItem>
-                  <MenuItem value={3}>Thirty</MenuItem>
+                  {days.map((day) => (
+                    <MenuItem value={day.id}>
+                      {day.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">ماه</InputLabel>
+                <InputLabel id="demo-simple-select-label">
+                  ماه
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={month}
                   label="Age"
-                  onChange={handleChange4}
+                  value={monthMiladi}
+                  onChange={(e) =>
+                    setMonthMiladi(e.target.value)
+                  }
                 >
-                  <MenuItem value={1}>Ten</MenuItem>
-                  <MenuItem value={2}>Twenty</MenuItem>
-                  <MenuItem value={3}>Thirty</MenuItem>
+                  {monthEn.map((month) => (
+                    <MenuItem key={month.id} value={month.id}>
+                      {month.name}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">سال</InputLabel>
+                <InputLabel id="demo-simple-select-label">
+                  سال
+                </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={year}
                   label="Age"
-                  onChange={handleChange5}
+                  value={yearMiladi}
+                  onChange={(e) =>
+                    setYearMiladi(e.target.value)
+                  }
                 >
-                  <MenuItem value={1}>Ten</MenuItem>
-                  <MenuItem value={2}>Twenty</MenuItem>
-                  <MenuItem value={3}>Thirty</MenuItem>
+                  {yearsEn.map((year) => (
+                    <MenuItem key={year} value={year}>{year}</MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </ButtonGroup>
@@ -269,13 +333,14 @@ const AddNewTraveller = () => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={age}
                 label="Age"
-                onChange={handleChange}
+                name="passportCountryId"
+                onChange={formik.handleChange}
+                value={formik.values.passportCountryId}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value={1}>ایران</MenuItem>
+                <MenuItem value={2}>ترکیه</MenuItem>
+                <MenuItem value={3}>عراق</MenuItem>
               </Select>
             </FormControl>
           </span>
@@ -287,13 +352,14 @@ const AddNewTraveller = () => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={age}
                 label="Age"
-                onChange={handleChange}
+                name="age"
+                onChange={formik.handleChange}
+                value={formik.values.age}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value={18}>18</MenuItem>
+                <MenuItem value={19}>19</MenuItem>
+                <MenuItem value={20}>20</MenuItem>
               </Select>
             </FormControl>
           </span>
@@ -301,6 +367,7 @@ const AddNewTraveller = () => {
       </div>
       <div>
         <Button
+          type="submit"
           variant="contained"
           style={{
             width: "100%",
@@ -312,7 +379,7 @@ const AddNewTraveller = () => {
           ذخیره
         </Button>
       </div>
-    </div>
+    </form>
   );
 };
 
